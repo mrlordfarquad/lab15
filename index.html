@@ -1,0 +1,161 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Document</title> 
+<style> 
+body { 
+background-color: rgb(135, 186, 210); 
+} 
+h1{ 
+color:black; 
+} 
+fieldset { 
+color:black; 
+margin: 20px; 
+} 
+legend { 
+display: block; 
+padding-left: 10px; 
+padding-right: 10px; 
+border: 3px solid green; 
+background-color:tomato; 
+color:white; 
+} 
+fieldset { 
+background-color: #eeeeee; 
+} 
+</style> 
+</head> 
+<body> 
+<h1>Практическая работа №15</h1> 
+<p>Мажитов Фархат</p> 
+<p>По2210к</p> 
+<fieldset> 
+<legend>Задание 1</legend> 
+<p>Вычисление факториала:</p> 
+<button onclick="calculateFactorial()">Нажми меня</button> 
+</fieldset> 
+<fieldset> 
+<legend>Задание 2</legend> 
+<p>Проверка на простое число:</p> 
+<button onclick="checkPrime()">Нажми меня</button> 
+</fieldset> 
+<fieldset style="display:flex;flex-direction:column;"> 
+<legend>Задание 3</legend> 
+<div>
+<p>Создайте калькулятор с помощью CSS:</p> 
+</div>
+<div>
+<input type="text" id="num1" placeholder="Число 1">
+<input type="text" id="num2" placeholder="Число 2">
+</div>
+<div>
+<button onclick="calculate()">Рассчитать</button>
+</div>
+<div>
+<p>Результат: <span id="result"></span></p>
+</div>
+</fieldset> 
+<fieldset style="display:flex;flex-direction:column;"> 
+<legend>Задание 4</legend> 
+<div>
+<p>Создайте Javascript quiz c 3 вопросами:</p> 
+</div>
+<div>
+<p>Вопрос 1: Сколько будет 2 + 2?</p>
+<p><input type="radio" name="q1" value="4"> 4</p>
+<p><input type="radio" name="q1" value="5"> 5</p>
+<p><input type="radio" name="q1" value="6"> 6</p>
+<p><input type="radio" name="q1" value="7"> 7</p>
+</div>
+<div>
+<p>Вопрос 2: Сколько будет 4 - 2?</p>
+<p><input type="radio" name="q2" value="2"> 2</p>
+<p><input type="radio" name="q2" value="3"> 3</p>
+<p><input type="radio" name="q2" value="1"> 1</p>
+<p><input type="radio" name="q2" value="5"> 5</p>
+</div>
+<div>
+<p>Вопрос 3: Сколько будет 6 × 2?</p>
+<p><input type="radio" name="q3" value="12"> 12</p>
+<p><input type="radio" name="q3" value="3"> 3</p>
+<p><input type="radio" name="q3" value="66"> 66</p>
+<p><input type="radio" name="q3" value="8"> 8</p>
+</div>
+<button onclick="checkAnswers()">Submit answer</button>
+<div>
+<p>Score: <span id="score">0</span></p>
+</div>
+</fieldset> 
+<script> 
+// Задача 1 
+function calculateFactorial() { 
+let num = prompt("Введите число:"); 
+let result = 1;
+for(let i=1; i<=num; i++){
+  result *= i;
+}
+alert(result);
+} 
+
+// Задача 2 
+function checkPrime() { 
+let num = prompt("Введите число:"); 
+let isPrime = true;
+for (let i = 2; i < num; i++) {
+  if (num % i === 0) {
+    isPrime = false;
+    break;
+  }
+}
+if (isPrime) {
+  alert(num + " - простое число");
+} else {
+  alert(num + " - составное число");
+}
+} 
+
+// Задача 3 
+function calculate() { 
+let num1 = document.getElementById("num1").value; 
+let num2 = document.getElementById("num2").value; 
+document.getElementById("result").innerText = parseInt(num1) + parseInt(num2); 
+} 
+
+// Задача 4 
+let score = 0;
+function checkAnswers() { 
+let radios1 = document.getElementsByName('q1');
+let radios2 = document.getElementsByName('q2');
+let radios3 = document.getElementsByName('q3');
+for (var i = 0, length = radios1.length; i < length; i++) {
+  if (radios1[i].checked) {
+    if (radios1[i].value === "4") {
+      score += 1;
+    }
+    break;
+  }
+}
+for (var i = 0, length = radios2.length; i < length; i++) {
+  if (radios2[i].checked) {
+    if (radios2[i].value === "2") {
+      score += 1;
+    }
+    break;
+  }
+}
+for (var i = 0, length = radios3.length; i < length; i++) {
+  if (radios3[i].checked) {
+    if (radios3[i].value === "12") {
+      score += 1;
+    }
+    break;
+  }
+}
+document.getElementById("score").innerText = score;
+} 
+</script> 
+</body> 
+</html>
